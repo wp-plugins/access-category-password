@@ -5,7 +5,7 @@ Text Domain: acpwd
 Plugin URI: https://wordpress.org/plugins/access-category-password/
 Description: Protects posts in categories by setting a unique Password for all restricted categories.
 Author: Jojaba 
-Version: 1.0
+Version: 1.1
 Author URI: http://perso.jojaba.fr/
 */
 
