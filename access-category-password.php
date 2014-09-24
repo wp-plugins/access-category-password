@@ -332,7 +332,7 @@ function acpwd_feed_init(){
 }
 
 function acpwd_feed_template() {
-    $acpwd_dir = 'wp-content/plugins/access-cat-password/';
+    $acpwd_dir = 'wp-content/plugins/access-category-password/';
     load_template( $acpwd_dir . 'acpwd_feed_template.php');
 }
 ?>
