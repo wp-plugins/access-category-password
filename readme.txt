@@ -50,8 +50,8 @@ No, sorry, I didn't find yet a solution to solve this. So if someone gets the li
 
 == Screenshots ==
 
-1. Access Category Password options page (French)
-2. Protected content in Twenty Four Theme (French)
+1. Access Category Password options page
+2. Protected content in Twenty Four Theme
 
 == Changelog ==
 
