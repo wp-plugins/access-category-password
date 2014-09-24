@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=5PXUP
 Tags: protect, password, category
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,7 +25,7 @@ Here's the list of the settings (see screenshots for further infos):
 
 Availabe languages : english and french.
 
-This plugin uses php Sessions (more secure than cookies) to keep in mind he authenticated users. The password is crypted before it is stored. On activation of the plugin you will get an error message about the sent headers, this won't affect his functionnalities.
+This plugin uses php Sessions (more secure than cookies) to keep in mind he authenticated users. The password is crypted before it is stored. On activation of the plugin you will get an error message about the sent headers, this won't affect his functionnalities. Your regular feeds will be removed and a new custom feed will replace them. You can set the name (slug) of that feed in the plugins options.
 
 == Installation ==
 
@@ -54,6 +54,9 @@ No, sorry, I didn't find yet a solution to solve this. So if someone gets the li
 2. Protected content in Twenty Four Theme (French)
 
 == Changelog ==
+
+= 1.1 =
+* Fixed wrong custom feed template inclusion path. Sorry for that!
 
 = 1.0 =
 * First release. Thanks for your feedback!
