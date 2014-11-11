@@ -1,0 +1,176 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Access Category Password - WordPress\n"
+"POT-Creation-Date: 2014-11-11 18:07+0100\n"
+"PO-Revision-Date: 2014-11-11 18:07+0100\n"
+"Last-Translator: \n"
+"Language-Team: jojaba <jojaba@gmail.com>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: G:\\wamp\\www\\wordpress\\wp-content\\plugins\\access-"
+"category-password\n"
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:31
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:32
+msgid "Access Category Password"
+msgstr "Access Category Password"
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:49
+msgid "Access Category Password Options"
+msgstr "Options d'Access Category Password"
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:64
+msgid "Save Changes"
+msgstr "Enregistrer les modifications"
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:96
+msgid "The password"
+msgstr "Le mot de passe"
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:104
+msgid "Impacted categories"
+msgstr "Les catégories impactées"
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:113
+msgid "Info message"
+msgstr "Message informatif"
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:121
+msgid "Error message"
+msgstr "Message d'erreur"
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:129
+msgid "The feed item description text"
+msgstr "La description de l'élément de flux"
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:140
+msgid ""
+"Here you can set the options of Access Category Password plugin. Set a "
+"password, check the categories with restricted access (the posts in these "
+"categories will require a password authentication) and define the info and "
+"error messages displayed on frontend page. Finally, give a name (slug) to "
+"your new feed and the default item description for restricted posts."
+msgstr ""
+"Ici vous pouvez définir les options du plugin Access Category Password "
+"(Accès catégorie par mot de passe). Définissez un mot de passe, indiquez les "
+"catégories à protéger (les articles de ces catégories nécessiteront une "
+"identification par mot de passe pour être consultés) et modifiez les "
+"messages informatif et d'erreur affichés sur la page Web si nécessaire."
+"Enfin, donnez un nom à votre nouveau flux personnalisé et la description par "
+"défaut utilisée pour les articles protégés."
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:151
+msgid "Password"
+msgstr "Mot de passe"
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:154
+msgid ""
+"You can type a word or un sentence, no restriction. If not set, the default "
+"password is <strong>acpwdpass</strong>."
+msgstr ""
+"Vous pouvez saisir un mot ou une phrase, cela n'a pas d'importance. Si vous "
+"n'en définissez pas, le mot de passe par défaut est : <strong>acpwdpass</"
+"strong>."
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:173
+msgid ""
+"Check the categories that you want to have password restricted post access."
+msgstr "Cochez les catégories que vous souhaitez protéger."
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:185
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:299
+msgid ""
+"This content has restricted access, please type the password below and get "
+"access."
+msgstr ""
+"Ce contenu est protégé, veuillez indiquer le mot de passe ci-dessous pour y "
+"accéder."
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:189
+msgid ""
+"The message displayed before the password form replacing the content (and "
+"the excerpt) of the article (HTML formating with allowed tags)."
+msgstr ""
+"Le message affiché avant le formulaire de demande de mot de passe remplaçant "
+"le contenu de l'article ou de l'extrait (formatage HTML possible avec les "
+"balises autorisées)."
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:190
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:205
+msgid "Allowed tags:"
+msgstr "Balises autorisées :"
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:200
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:280
+msgid "Sorry, but this is the wrong password."
+msgstr "Désolé, mais ceci est le mauvais mot de passe."
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:204
+msgid ""
+"The message that will display if the user typed the wrong password (HTML "
+"formating with allowed tags)."
+msgstr ""
+"Le message qui s'affichera lorsque l'utilisateur saisira le mauvais mot de "
+"passe (formatage possible avec balises autorisées)."
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:215
+msgid "Access to this post restricted, please go to the website to read it."
+msgstr ""
+"L'accès à cet article est protégé, veuillez vous rendre au site pour le "
+"lire. Merci."
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:219
+msgid ""
+"The feed item descriptions that belong to access restricted posts will be "
+"replaced by this sentence (HTML formating not allowed)."
+msgstr ""
+"La description de l'élément de flux qui correspond à des articles protégés "
+"sera remplacé par cette phrase (pas de formatage HTML possible)"
+
+#: G:\wamp\www\wordpress\wp-content\plugins\access-category-password/access-category-password.php:302
+msgid "Get access"
+msgstr "Accéder"
+
+#~ msgid "Feed name"
+#~ msgstr "Nom du flux"
+
+#~ msgid "acpwd-feed"
+#~ msgstr "flux-acpwd"
+
+#~ msgid ""
+#~ "The regular automatic generated WordPress Feeds are removed by this "
+#~ "plugin and replaced by a custom feed taking in account the post access "
+#~ "restriction. Here you can set the name of this new feed. Please use only "
+#~ "lowercase letters (a-z), digits (0-9), dashes (-), and no spaces for this "
+#~ "name. If you defined your permalinks to have nice URL in the <a href="
+#~ "\"options-permalink.php\">Permalinks option page</a> you can get the feed "
+#~ "on <code>%1$s</code> or <code>%2$s</code> (Don't forget to flush the "
+#~ "rewrite rules after setting this new name by <a href=\"options-permalink."
+#~ "php\">visiting this Permalinks option page</a>). Alternatively, this feed "
+#~ "will be available on <code>%3$s</code>."
+#~ msgstr ""
+#~ "Les flux générés automatiquement par WordPress sont supprimés par cette "
+#~ "extension et remplacés par un flux personnalisé prenant en compte les "
+#~ "restrictions d'accès. Ici vous pouvez définir le nom (url) de ce nouveau "
+#~ "flux. Veuillez n'utiliser que des lettres minuscules non accentuées (a-"
+#~ "z), des chiffres (0-9) et des tirets (pas d'espaces) pour ce nom. Si vous "
+#~ "avez modifiés vos permaliens afin d'obtenir de \"jolies url\" dans la <a "
+#~ "href=\"options-permalink.php\">page d'options des permaliens</a> (menu "
+#~ "\"Réglages\"), le flux sera accessible à partir de l'adresse <code>%1$s</"
+#~ "code> ou <code>%2$s</code> (N'oubliez pas de flusher les règles de "
+#~ "réécriture après avoir changé ce nom en vous rendant à <a href=\"options-"
+#~ "permalink.php\">cette page d'options des permaliens</a>). Sinon, le flux "
+#~ "sera accessible à partir de l'url <code>%3$s</code>."
+
+#~ msgid ""
+#~ "<p style=\"color: darkred;\">Sorry, but this is the wrong password.</p>"
+#~ msgstr ""
+#~ "<p style=\"color: darkred;\">Désolé, mais ceci est le mauvais mot de "
+#~ "passe.</p>"
