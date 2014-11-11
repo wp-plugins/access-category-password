@@ -24,7 +24,7 @@ Here's the list of the settings (see screenshots for further infos):
 
 Availabe languages : english and french.
 
-This plugin uses php Sessions (more secure than cookies) to keep in mind he authenticated users. The password is crypted before it is stored.
+This plugin uses php Sessions (more secure than cookies) to keep in mind the authenticated users. The password is crypted before it is stored. The regular feed content is filtered to avoid content display of restricted categories posts.
 
 == Installation ==
 
