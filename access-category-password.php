@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 Plugin Name: Access Category Password
 Text Domain: acpwd
@@ -124,14 +124,6 @@ if( !function_exists('acpwd_options_settings'))  {
 			'acpwd_option_main'
         );
         
-         add_settings_field(
-			'feed_name',
-			__( 'Feed name', 'acpwd' ),
-			'acpwd_func_feed_name',
-			'acpwd_setting_section',
-			'acpwd_option_main'
-        );
-        
         add_settings_field(
 			'feed_desc_text',
 			__( 'The feed item description text', 'acpwd' ),
@@ -215,20 +207,6 @@ if( !function_exists('acpwd_func_error_message'))  {
     <?php }
 }
 
-/** The new feed name **/
-if( !function_exists('acpwd_func_feed_name'))  {
-	function acpwd_func_feed_name(){
-	/* Get the option value from the database. */
-		$options = get_option( 'acpwd_settings_options' );
-		$feed_name_option = ($options['feed_name'] != '') ? $options['feed_name'] : __('acpwd-feed', 'acpwd');	
-		/* Echo the field. */ ?>
-		<input type="text" id="feed_name" name="acpwd_settings_options[feed_name]" value="<?php echo esc_attr($feed_name_option); ?>" />
-		<p class="description">
-		    <?php printf(__( 'The regular automatic generated WordPress Feeds are removed by this plugin and replaced by a custom feed taking in account the post access restriction. Here you can set the name of this new feed. Please use only lowercase letters (a-z), digits (0-9), dashes (-), and no spaces for this name. If you defined your permalinks to have nice URL in the <a href="options-permalink.php">Permalinks option page</a> you can get the feed on <code>%1$s</code> or <code>%2$s</code> (Don\'t forget to flush the rewrite rules after setting this new name by <a href="options-permalink.php">visiting this Permalinks option page</a>). Alternatively, this feed will be available on <code>%3$s</code>.', 'acpwd' ), home_url( '/' ).$feed_name_option, home_url( '/' ).'feed/'.$feed_name_option, home_url( '/' ).'?feed='.$feed_name_option); ?>
-        </p>
-    <?php }
-}
-
 /** The feed item description text **/
 if( !function_exists('acpwd_func_feed_desc_text'))  {
 	function acpwd_func_feed_desc_text(){
@@ -263,9 +241,6 @@ if( !function_exists('acpwd_options_validate'))  {
 	/** clean error message field, HTML allowed for the format */
 	$options['error_message'] = wp_filter_kses( $input['error_message'] );
 	
-    /** validate the feed slug (name) */
-	$options['feed_name'] = sanitize_title_with_dashes( $input['feed_name'] );
-	
 	/** clean feed desc text HTML not allowed */
 	$options['feed_desc_text'] = wp_filter_nohtml_kses( $input['feed_desc_text'] );
 
@@ -277,62 +252,61 @@ if( !function_exists('acpwd_options_validate'))  {
 /* Frontend of the plugin          */
 /* ******************************* */
 
-/* Validation of the password */
-function acpwd_session_check() {
-	// Launching session if not launched
-	if(!session_id()) session_start();
-	// $_SESSION['acpwd_session'] = 0;
-	// Checking password
-	$acpwd_options = get_option('acpwd_settings_options');
-    if(isset($_POST['pass']) && crypt($_POST['pass'], $_POST['pass']) == $acpwd_options['password'])
-        $_SESSION['acpwd_session'] = 1;
-    elseif (isset($_POST['pass']) && crypt($_POST['pass'], $_POST['pass']) != $acpwd_options['password']) {
-    	$_POST['msg'] = ($acpwd_options['error_message'] != '') ? '<p style="color: darkred;">'.$acpwd_options['error_message'].'</p>' : '<p style="color: darkred;">'.__('Sorry, but this is the wrong password.', 'acpwd').'</p>';
-    	$_SESSION['acpwd_session'] = 0;
+/* Start and destroy sessions */
+add_action('init', 'myStartSession', 1);
+add_action('wp_logout', 'myEndSession');
+add_action('wp_login', 'myEndSession');
+
+function myStartSession() {
+    if (!session_id()) {
+        session_start();
     }
 }
-add_action('init', 'acpwd_session_check', 1);
 
-/* Displaying the password form */
+function myEndSession() {
+    session_destroy ();
+}
+
+/* Validation of the password */
+function acpwd_session_check() {
+    // The form has been submited
+    if(isset($_POST['pass'])) {
+	    // Checking password
+	    $acpwd_options = get_option('acpwd_settings_options');
+        if(crypt($_POST['pass'], $_POST['pass']) == $acpwd_options['password']) {
+            $_SESSION['acpwd_session'] = 1;
+        }
+        elseif (crypt($_POST['pass'], $_POST['pass']) != $acpwd_options['password']) {
+        	$_POST['msg'] = ($acpwd_options['error_message'] != '') ? '<p style="color: darkred;">'.$acpwd_options['error_message'].'</p>' : '<p style="color: darkred;">'.__('Sorry, but this is the wrong password.', 'acpwd').'</p>';
+        	$_SESSION['acpwd_session'] = 0;
+        }
+    }
+}
+add_action('init', 'acpwd_session_check', 2);
+
+/* Displaying the password form or the feed replacement sentence */
 function acpwd_frontend_changes($content) {
     $acpwd_options = get_option('acpwd_settings_options');
 	if ( in_category($acpwd_options['impacted_categories']) ) {
         if ($_SESSION['acpwd_session'] == 1) {
             $content = $content;
         } else { 
-            $content = ($options['info_message'] != '') ? '<p>'.$options['info_message'].'</p>' : '<p>'.__('This content has restricted access, please type the password below and get access.', 'acpwd').'</p>';
-            $content .= '
-            <form name="login" action="'.$_SERVER['REQUEST_URI'].'" method="post"> 
-                <input type="password" name="pass"> <input type="submit" value="'.__('Get access', 'acpwd').'"> 
-            </form>'; 
-            if (isset ($_POST['msg'])) $content .= $_POST['msg'];
+            if (is_feed()) {
+                // Feed content replacement
+                $content = stripslashes( $acpwd_options['feed_desc_text'] );
+            } else {
+                // Post or excerpt content replacement
+                $content = (isset($options['info_message']) && $options['info_message'] != '') ? '<p>'.$options['info_message'].'</p>' : '<p>'.__('This content has restricted access, please type the password below and get access.', 'acpwd').'</p>';
+                $content .= '
+                <form name="login" action="'.$_SERVER['REQUEST_URI'].'" method="post"> 
+                    <input type="password" name="pass"> <input type="submit" value="'.__('Get access', 'acpwd').'">
+                </form>'; 
+                if (isset ($_POST['msg'])) $content .= $_POST['msg'];
+            }
         }
     }
 	return $content;
 }
 add_filter( 'the_content', 'acpwd_frontend_changes' );
 add_filter( 'get_the_excerpt', 'acpwd_frontend_changes' );
-
-/* Remove automatic links to feeds */
-remove_action('wp_head', 'feed_links', 2);
-remove_action('wp_head', 'feed_links_extra', 3);
-
-/* Disable WP generated feed */
-remove_action( 'do_feed_rdf', 'do_feed_rdf', 10, 1 );
-remove_action( 'do_feed_rss', 'do_feed_rss', 10, 1 );
-remove_action( 'do_feed_rss2', 'do_feed_rss2', 10, 1 );
-remove_action( 'do_feed_atom', 'do_feed_atom', 10, 1 );
-
-/* Creating the new customized feed */
-add_action('init', 'acpwd_feed_init');
-function acpwd_feed_init(){
-    $options = get_option( 'acpwd_settings_options' );
-    $feed_name_option = ($options['feed_name'] != '') ? $options['feed_name'] : __('acpwd-feed', 'acpwd');	
-    add_feed($feed_name_option, 'acpwd_feed_template');
-}
-
-function acpwd_feed_template() {
-    $acpwd_dir = 'wp-content/plugins/access-category-password/';
-    load_template( $acpwd_dir . 'acpwd_feed_template.php');
-}
 ?>
